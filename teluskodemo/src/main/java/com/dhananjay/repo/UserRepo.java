@@ -9,11 +9,10 @@ import com.dhananjay.Users;
 
 public class UserRepo {
 
-	private String url="jdbc:mysql://localhost:3306/test";
+	private String url = "jdbc:mysql://localhost:3306/test";
 	private String dbuser = "root";
 	private String pwd = "admin";
-	
-	
+
 	public UserRepo() {
 
 		// Write Database Connection Code
@@ -23,31 +22,57 @@ public class UserRepo {
 		String sql = "SELECT * FROM users WHERE user_id = " + id;
 		Users user = new Users();
 		try {
-		Class.forName("com.mysql.jdbc.Driver");
-		
-			Connection con = DriverManager.getConnection(url,dbuser,pwd);
-			
+			Class.forName("com.mysql.jdbc.Driver");
+
+			Connection con = DriverManager.getConnection(url, dbuser, pwd);
+
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
-		
 
 			rs.next();
 			user.setUname(rs.getString(2));
 			user.setUid(rs.getInt(1));
 			user.setUemail(rs.getString(3));
 			user.setUage(rs.getInt(4));
-			
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return user;
+
+	}
+	
+	
+	public void saveUser(Users user){
 		
+		String sql = "INSERT into users VALUES (?,?,?,?)";
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+
+			Connection con = DriverManager.getConnection(url, dbuser, pwd);
+
+			java.sql.PreparedStatement pr = con.prepareStatement(sql);
+			pr.setInt(1, user.getUid());
+			pr.setString(2, user.getUname());
+			pr.setString(3, user.getUemail());
+			pr.setInt(4, user.getUage());
+			
+			pr.executeUpdate();
+			
+			
+			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			
-		
-		
-		return user;
 
+		
 	}
+	
+	
+	
 
 }

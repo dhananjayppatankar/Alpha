@@ -17,6 +17,18 @@
 		<input type= "submit">
 	
 	</form>
+	
+	
+	
+	<h1>New User</h1>
+	
+		<form action="saveuser" method="post">
+		<input type="text" id="id" name="id" placeholder="Enter id"> <br> <br> 
+			<input type="text" id="name" name="name" placeholder="Enter Name"> <br>	<br>	
+		<input type="email" id="email" name= "email" placeholder="Enter Email Add"> <br> <br>		
+		<input type="text" id="age" name ="age" placeholder="Enter Age"> <br>	<br>	
+			<input type= "submit">
+		</form>
 
 	
 
