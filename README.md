@@ -39,7 +39,10 @@ Lecture 7 :
 	3. get all name has this "Str"  
 			
 		
-	Lecture 11 :
+Lecture 11 :
   
-  Filters :  Inteceptors ------      FLOW Client ---- Filters(Intercept the request) ----  Servlet ----- DB
+   	-Filters :  Inteceptors ------      FLOW Client ---- Filters(Intercept the request) ----  Servlet ----- DB
+  	- Filter Class implement Filter Interface 
+	- doFilter method chain.filter(request, respomse)
+	- make use of HTTPSERvlet request and response as there is request.getSession method available which comes handy.
 		
